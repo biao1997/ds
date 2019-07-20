@@ -1,32 +1,38 @@
 import Vue from 'vue'
+// 1引入安装好的 Vue-router
 import Router from 'vue-router'
-// import Home from './views/Home.vue'
-import login from './view/login.vue'
+// 2引入定义好的 。vue后缀类型的文件
+import Login from './views/Login'
+import Home from './views/Home'
+import WelCome from './views/Home/WelCome'
+import Users from './views/Home/Users'
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path:"/",
-     redirect:"/login"
+const router = new Router({
+  routes: [{
+    path: '/',
+    redirect: '/home'
+  }, {
+    path: '/login',
+    component: Login
+  }, {
+    path: '/home',
+    component: Home,
+    redirect: '/welcome',
+    children: [{
+      path: '/welcome',
+      component: WelCome
     },
     {
-      path:"/login",
-      
-      component:login
-    }
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: Home
-    // },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    // }
-  ]
+      path: '/users',
+      component: Users
+    }]
+  }]
 })
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login') return next()
+  const tokenStr = sessionStorage.getItem('token')
+  if (!tokenStr) return next('/login')
+  next()
+})
+export default router
