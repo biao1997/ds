@@ -9,6 +9,7 @@ import Users from './views/Home/Users'
 import Rights from './views/Home/power/rights'
 import Roles from './views/Home/power/roles'
 import Goods from './views/Home/goods'
+import Params from './views/Home/params/'
 
 Vue.use(Router)
 
@@ -42,7 +43,12 @@ const router = new Router({
     {
       path: '/goods',
       component: Goods
+    },
+    {
+      path: '/params',
+      component: Params
     }
+
     ]
   }]
 })
