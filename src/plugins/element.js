@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import {
+  Timeline,
+  TimelineItem,
   Button,
   Input,
   Form, FormItem,
@@ -75,7 +77,8 @@ Vue.use(Button)
   .use(Checkbox)
   .use(CheckboxGroup)
   .use(Upload)
-
+  .use(Timeline)
+  .use(TimelineItem)
 // .use(Message)
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
