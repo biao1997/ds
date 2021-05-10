@@ -15,7 +15,7 @@
     "moment": "^2.24.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "vue-quill-editor": "^3.0.6",
     "vue-table-with-tree-grid": "^0.2.4"
   },
